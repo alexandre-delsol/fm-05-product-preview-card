@@ -1,105 +1,183 @@
-# Frontend Mentor - Product preview card component
+# Frontend Mentor — Product Preview Card Component
 
-![Design preview for the Product preview card component coding challenge](./design/desktop-preview.jpg)
+A responsive product preview card built as part of the [Frontend Mentor](https://www.frontendmentor.io/) challenges.
 
-## Welcome! 👋
+The goal of this challenge was to reproduce the provided design as accurately as possible while strengthening my fundamentals in **HTML and CSS**, particularly responsive layouts, Flexbox, typography, and semantic HTML.
 
-Thanks for checking out this front-end coding challenge.
+## 📸 Overview
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+### The challenge
 
-**To do this challenge, you need a basic understanding of HTML and CSS.**
+Users should be able to:
 
-## The challenge
+* View the optimal layout depending on their device's screen size.
+* See hover and focus states for interactive elements.
+* View the product information and pricing clearly.
+* Interact with the "Add to Cart" button.
 
-Your challenge is to build out this product preview card component and get it looking as close to the design as possible.
+### Screenshot
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+*Add your final screenshot here if you want to showcase the result.*
 
-Your users should be able to:
+## 🛠️ Built with
 
-- View the optimal layout depending on their device's screen size
-- See hover and focus states for interactive elements
+* Semantic HTML5
+* CSS3
+* Flexbox
+* CSS custom properties
+* Responsive design
+* `<picture>` and `<source>` for responsive images
+* Google Fonts
 
-### Want some support on the challenge? 
+  * Montserrat
+  * Fraunces
 
-[Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+## 📚 What I learned
 
-## Where to find everything
+This challenge allowed me to reinforce several frontend fundamentals.
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+### Responsive images
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+I used the `<picture>` element to display a different image depending on the viewport width:
 
-If you would like the Figma design file to gain experience using professional tools and build more accurate projects faster, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+```html
+<picture>
+    <source media="(max-width: 600px)" srcset="./images/image-product-mobile.jpg">
+    <img src="./images/image-product-desktop.jpg" alt="Gabrielle Essence Eau De Parfum">
+</picture>
+```
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+This was useful for understanding that responsive design is not limited to resizing an image with CSS: sometimes the appropriate solution is to provide a different image asset.
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+### Flexbox
 
-## Using AI coding assistants
+The component uses Flexbox for both the main layout and the button:
 
-We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+```css
+main {
+    display: flex;
+}
 
-- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
-- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+```
 
-**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+I reinforced my understanding of:
 
-**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+* `flex-direction`
+* `justify-content`
+* `align-items`
+* `gap`
+* main and cross axes
 
-## Building your project
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+### CSS custom properties
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+I used CSS variables to centralize the main colors:
 
-## Deploying your project
+```css
+:root {
+    --color-light-green: hsl(158, 36%, 37%);
+    --color-dark-green: hsl(158, 42%, 18%);
+    --color-black: hsl(212, 21%, 14%);
+    --color-grey: hsl(228, 12%, 48%);
+    --color-cream: hsl(30, 38%, 92%);
+    --color-white: hsl(0, 0%, 100%);
+}
+```
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+This makes the stylesheet easier to maintain and keeps repeated values consistent.
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+### Accessibility basics
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://www.frontendmentor.io/guides/hosting-your-solution).
+The cart icon is decorative, so it uses an empty `alt` attribute:
 
-## Create a custom `README.md`
+```html
+<img src="./images/icon-cart.svg" alt="">
+```
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+The "Add to Cart" action uses a semantic `<button>` rather than a link because it represents an action.
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+## 🧠 Challenges and decisions
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+One of the main objectives of this project was not simply to reproduce the screenshot, but to understand **why each CSS property was necessary**.
 
-## Submitting your solution
+Some of the main decisions included:
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://www.frontendmentor.io/guides/how-to-submit-solutions) for tips on how to do this.
+* Using Flexbox for the card structure.
+* Using `<picture>` for responsive image sources.
+* Using `gap` to control the spacing between the cart icon and button text.
+* Using `min-height: 100vh` to allow the page to occupy at least the full viewport height.
+* Using CSS variables for repeated colors.
+* Using a media query to switch from a horizontal to a vertical layout.
+* Keeping the HTML semantic and letting CSS handle the visual presentation.
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+## 📂 Project structure
 
-## Sharing your solution
+```text
+.
+├── images/
+│   ├── favicon-32x32.png
+│   ├── icon-cart.svg
+│   ├── image-product-desktop.jpg
+│   └── image-product-mobile.jpg
+│
+├── design/
+│   ├── desktop-design.jpg
+│   ├── mobile-design.jpg
+│   └── active-states.jpg
+│
+├── index.html
+├── style.css
+└── README.md
+```
 
-There are multiple places you can share your solution:
+## 🚀 Getting started
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community). 
-2. Share on [X (formerly Twitter)](https://x.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in your post. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on [LinkedIn](https://www.linkedin.com/company/frontend-mentor/).
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+No build tool or dependency installation is required.
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
+Clone the repository:
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+```bash
+git clone <repository-url>
+```
 
-## Got feedback for us?
+Open the project directory:
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+```bash
+cd <project-directory>
+```
 
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
+Then open `index.html` in a browser.
 
-**Have fun building!** 🚀
+## 🎨 Design
+
+This project was built from the design provided by Frontend Mentor.
+
+The objective was to reproduce:
+
+* Desktop layout
+* Mobile layout
+* Typography
+* Colors
+* Spacing
+* Border radius
+* Product imagery
+* Button hover state
+
+## 🔗 Links
+
+* [Frontend Mentor](https://www.frontendmentor.io/)
+* [My GitHub](https://github.com/alexandre-delsol)
+* [My Frontend Mentor profile](https://www.frontendmentor.io/profile/alexandre-delsol)
+
+## 👤 Author
+
+**Alexandre DELSOL**
+
+Frontend / Full-Stack Developer in training, currently strengthening my frontend fundamentals through practical projects and Frontend Mentor challenges.
+
