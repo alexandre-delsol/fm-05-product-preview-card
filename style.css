@@ -1,0 +1,51 @@
+:root {
+    --color-light-green: hsl(158, 36%, 37%);
+    --color-dark-green: hsl(158, 42%, 18%);
+
+    --color-black: hsl(212, 21%, 14%);
+    --color-grey: hsl(228, 12%, 48%);
+    --color-cream: hsl(30, 38%, 92%);
+    --color-white: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+
+
+.attribution {
+    font-size: 0.6875rem;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
